@@ -29,8 +29,6 @@ def run(src: list[Path], lines: list[ErrorLine], res={}, iter=1, cand=3, n=3,
         model=Default.Model.value, model_conf={}, frame=Default.Framework.value, frame_conf={}) -> list[Function]:
   generator = (NegativeTestGeneratorBuidler()
                .add_pass_type("TypeError")
-               .add_pass_type("AttributeError")
-               .add_pass_type("NotImplementedError")
                .set_paths(src)
                .set_res(res)
                .set_iteration(iter)

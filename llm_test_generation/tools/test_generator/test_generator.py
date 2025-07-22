@@ -74,8 +74,8 @@ class TestGenerator(ToolBase):
       if str(Path(out.result.path).resolve()) != str(self.src[0].resolve()): 
         return False
       # 목표 함수가 아니면 유효하지 않음.
-      # elif target_fct != out.result.function: 
-      #   return False
+      elif target_fct != out.result.function: 
+        return False
       elif not self.info.is_in_range(out.result.function, out.result.lineno): return False
     return True
       
