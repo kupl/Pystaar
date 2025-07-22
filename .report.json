@@ -1,0 +1,24 @@
+{
+    "created": 1753094422.088158,
+    "duration": 0.013975143432617188,
+    "exitcode": 4,
+    "root": "",
+    "environment": {},
+    "summary": {
+        "total": 0,
+        "collected": 0
+    },
+    "collectors": [
+        {
+            "nodeid": "",
+            "outcome": "passed",
+            "result": [
+                {
+                    "nodeid": "test/test_get_previous_completed_neg1.py",
+                    "type": "Module"
+                }
+            ]
+        }
+    ],
+    "tests": []
+}
