@@ -6,8 +6,8 @@ The repository contains the framework for PySTAAR, for the paper "PySTAAR: An En
 We recommend using a PySTAAR in a local environment. First, clone the repository:
 
 ```bash
-git clone
-cd PySTAAR
+git clone https://github.com/kupl/Pystaar.git
+cd Pystaar
 pip install -r requirements.txt
 ``` 
 
