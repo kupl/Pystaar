@@ -1,7 +1,0 @@
-dotenv
-loguru
-openai
-pytest
-pytest-json-report
-typing
-typing-extensions

@@ -2,7 +2,6 @@ import argparse
 from pathlib import Path
 import sys 
 
-# 디렉토리 경로들을 sys.path에 추가
 sys.path.append(str((Path(__file__).parent / "llm_test_generation")))
 
 from llm_run import main as llm_test_generation_main
@@ -10,11 +9,8 @@ from llm_run import Default, available_models, available_frameworks
 from patch_run import run as patch_run_main
 
 def run(args):
-    # LLM을 이용한 테스트 코드 생성 실행
     llm_test_generation_main(args)
-
-    # 패치 생성 및 검증 실행
-    patch_run_main(args.project_dir, args.src_dir, args.config, args.only_test, args.patch_gen)
+    patch_run_main(args.project_dir, args.src_dir, "test/config.json", args.only_test, args.patch_gen)
 
 def main() :
     parser = argparse.ArgumentParser()
@@ -23,7 +19,7 @@ def main() :
                       help="source code file path")
     parser.add_argument("-s", "--source-directory", dest="src_dir", action="store", required=True, type=Path)
     parser.add_argument("-p", "--project-directory", dest="project_dir", action="store", required=True, type=Path)
-    parser.add_argument("-c", "--config-file", dest="config", action="store", required=True, type=Path)
+    # parser.add_argument("-c", "--config-file", dest="config", action="store", required=True, type=Path)
 
     # Optional arguments for LLM test generation
     parser.add_argument("-r", "--res", metavar="MANUAL_RESOURCE", type=str,
