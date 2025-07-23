@@ -42,14 +42,12 @@ def main(args):
   fw_path = args.fw_configs
   out = args.out
 
-  # 추가 정보, 설정 내용 상세 구성.
   res = dict(item.split(":", 1) for item in res if ":" in item)
   err_config = read_json(err_path) if err_path != Path() else {}
   neg_config = read_json(neg_path) if neg_path != Path() else {}
   pos_config = read_json(pos_path) if pos_path != Path() else {}
   fw_config = read_json(fw_path) if fw_path != Path() else {}
 
-  # TypeError 발생 가능 코드 줄 탐지.
   try: project_root: Path = project[0]
   except:
     project_root = project
@@ -60,11 +58,8 @@ def main(args):
   classified = _classify_by_function(errorlines)
 
   for fct, errs in classified.items():
-
-    # 테스트케이스 생성.
     tests = run_tester(src, res, errs, iter, 5, num, model, neg_config, pos_config, fw, fw_config)
 
-    # 테스트케이스 병합 후 파일로 출력.
     test_path = out/f"{fct}_test.py"
     codes = "\n\n".join(test.to_py() for test in tests)
 
@@ -72,14 +67,12 @@ def main(args):
     write_file(test_path, codes)
   
 
-  # test 디렉토리에서 pos, neg 파일 찾기
   for test_file in Default.TestCases_Path.value.glob("*.py"):
     if "_pos" in test_file.name:
       test_pos_path = test_file
     if "_neg" in test_file.name:
       test_neg_path = test_file
 
-  # 추후 Pyter를 위한 config.json 자동 생성
   with open(Default.TestCases_Path.value / "config.json", "w") as f:
     config = {
       "name": "sample",
@@ -103,9 +96,6 @@ def main(args):
     json.dump((config), f)
 
 def parse():
-  # 선택 가능한 모델, 테스트 프레임워크 리스트 구성.
-
-  # 인자 파싱.
   parser = ArgumentParser()
   parser.add_argument("-sf", "--source_file", dest="src_file", metavar="SOURCE_PATH", type=Path, required=True,
                       default=[], nargs='+',
