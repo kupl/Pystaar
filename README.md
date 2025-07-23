@@ -18,21 +18,30 @@ pip install --use-pep517 -e pyannotate
 ```
 
 # Execution Guide 
+
+To execute the PySTAAR with existing components, you shold set up OpenAI API key in the environment variable
+```bash
+export OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
+```
+
 ## Running the whole framework
 To run the PySTAAR framework, we provide a sample script that demonstrates how to use the framework:
 
 ```bash
-python pystaar.py -sf project/source/add.py -s project/source -p project -c test/config.json -f test
+python pystaar.py -sf project/source/add.py -s project/source -p project -f test
 ```
 
-Each argument denote following:
-- `--sf`: Source file to test whether it has type errors.
-- `--s`: Source directory containing the source file and other source files.
-- `--p`: Project directory containing the source file.
-- `--c`: Configuration file in JSON format. 
-- `--f`: Specific function to test for type errors.
+Each option denote following:
+- `-sf`: Source file to test whether it has type errors.
+- `-s`: Source directory containing the source file and other source files.
+- `-p`: Project directory containing the source file.
+- `-f` (optional): Specific function to test for type errors.
 
-The last argument is optional. If not provided, the framework will test all functions in the source file.
+You can check other options by running the script with `-h` or `--help` option:
+```bash
+python pystaar.py -h
+```
+
 
 ## Running the framework on a specific module
 Each module in the framework can be run independently. 
