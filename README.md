@@ -50,10 +50,10 @@ Each module in the framework can be run independently.
 To generate tests for a specific source file, use the following command:
 
 ```bash
-python llm_run.py -sf project/source/add.py -p project
+python run_test_generation.py -sf project/source/add.py -p project
 ```
 
-As a result of this command, the framework will generate tests for the functions in the specified source file. The generated tests will be saved in the `test` directory. Moreover, the framework will also generate a configuration file in the `test` directory, with name `config.json`, which contains the information about the test execution process, needed for further patch generation. Additional arguments can be found in the `llm_run.py` file. Further explanation of the `config.json` file can be found in [Configuation File](#configuration-file).
+As a result of this command, the framework will generate tests for the functions in the specified source file. The generated tests will be saved in the `test` directory. Moreover, the framework will also generate a configuration file in the `test` directory, with name `config.json`, which contains the information about the test execution process, needed for further patch generation. Additional arguments can be found in the `run_test_generation.py` file. Further explanation of the `config.json` file can be found in [Configuation File](#configuration-file).
 
 ### Execution of Tests
 To run the fault localization module, use the following command:
