@@ -22,7 +22,7 @@ pip install --use-pep517 -e pyannotate
 To run the PySTAAR framework, we provide a sample script that demonstrates how to use the framework:
 
 ```bash
-python pystaar.py -sf project/src/add.py -s project/src -p project -c test/config.json -f test
+python pystaar.py -sf project/source/add.py -s project/source -p project -c test/config.json -f test
 ```
 
 Each argument denote following:
@@ -41,7 +41,7 @@ Each module in the framework can be run independently.
 To generate tests for a specific source file, use the following command:
 
 ```bash
-python llm_run.py -sf project/src/add.py -p project
+python llm_run.py -sf project/source/add.py -p project
 ```
 
 As a result of this command, the framework will generate tests for the functions in the specified source file. The generated tests will be saved in the `test` directory. Moreover, the framework will also generate a configuration file in the `test` directory, with name `config.json`, which contains the information about the test execution process, needed for further patch generation. Additional arguments can be found in the `llm_run.py` file. Further explanation of the `config.json` file can be found in [Configuation File](#configuration-file).
@@ -78,7 +78,7 @@ This command will validate the generated patches and will save the results in th
 ### Total Patch Generation
 To run the whole patch generation process (Execution of Tests, Fault Localization, Patch Generation, Patch Validation), use the following command:
 ```bash
-python patch_run.py -s project/src -p project -c test/config.json
+python patch_run.py -s project/source -p project -c test/config.json
 ```
 This command can be used when tests are already generated and the user wants to customize the `config.json` file.
 
