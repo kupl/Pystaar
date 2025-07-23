@@ -206,7 +206,7 @@ def run(src_dir, config):
                     # Neg None Guard
                     #if len(neg_info['args'][arg_name]) == 1 and error_is_if_stmt :
                     def neg_guard() :
-                        if arg_name in neg_info['args'] and len(neg_info['args'][arg_name]) >= 1 and error_is_if_stmt :
+                        if arg_name in neg_info['args'] and len(neg_info['args'][arg_name]) >= 1 and error_is_if_stmt:
                             arg_node = None
                             arg_node = find_node(error_stmt)
 
@@ -219,7 +219,7 @@ def run(src_dir, config):
                                 neg_typ = normalize_type(neg_typ)
 
                                 add_guard = AddGuard(neg_file_node)
-                                complete_list = add_guard.get_guard_list({arg_node : {neg_typ : 1}}, error_stmt, True)
+                                complete_list = add_guard.get_guard_list({arg_node : {neg_typ : 1}}, error_stmt, True, is_if=error_is_if_stmt)
 
                                 for node in complete_list :
                                     if '.' in neg_typ:
@@ -237,7 +237,7 @@ def run(src_dir, config):
                                     #continue
                                     find_template = FindTemplate()
                                     targets = find_template.get_target(node)
-
+                                    print(targets)
                                     target = targets[0]
 
                                     save_patch(node, target, filename, config)
@@ -294,6 +294,31 @@ def run(src_dir, config):
                                         for node in complete_list :
                                             if '.' in abs_pos_typs[0]:
                                                 top_module = abs_pos_typs[0].split('.')[0]
+                                                # make import statement
+                                                make_import = True
+                                                for n in node.body:
+                                                    if isinstance(n, ast.Import) and any(alias.name == top_module for alias in n.names):
+                                                        make_import = False
+                                                        break
+                                                if top_module and make_import:
+                                                    import_node = ast.Import(names=[ast.alias(name=top_module, asname=None)])
+                                                    node.body.insert(0, import_node)
+
+                                            #continue
+                                            find_template = FindTemplate()
+                                            targets = find_template.get_target(node)
+
+                                            target = targets[0]
+                                            save_patch(node, target, filename, config)
+
+                                            # self.validate.validate(node, neg_filename, targets, test, self.total_test_num)
+                                    else: 
+                                        # Pos Guard
+                                        add_guard = AddGuard(neg_file_node)
+                                        complete_list = add_guard.get_guard_list({arg_node: {abs_pos_typs : 1}}, error_stmt, False, False)
+                                        for node in complete_list :
+                                            if '.' in abs_pos_typs:
+                                                top_module = abs_pos_typs.split('.')[0]
                                                 # make import statement
                                                 make_import = True
                                                 for n in node.body:

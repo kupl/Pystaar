@@ -6,13 +6,15 @@ class AddGuard(ast.NodeTransformer) :
     def __init__(self, origin) :
         self.origin = origin
 
-    def get_guard_list(self, var_score, node, neg=False) :
+    def get_guard_list(self, var_score, node, neg=False, is_if=False):
         guard_list = list()
         for target, typ_info in var_score.items() :
             for typ in typ_info.keys() :
                 iterable_types = ['List', 'Tuple', 'Set', 'Dict']
 
                 new_node = deepcopy(node)
+
+                
 
                 if isinstance(typ, tuple) : 
                     value = ast.BoolOp(
@@ -49,15 +51,22 @@ class AddGuard(ast.NodeTransformer) :
                     else :
                         value = ast.UnaryOp(op=ast.Not(), operand=value)
 
-
-                new_node.test = ast.BoolOp(
-                    op=ast.And(),
-                    values=[
-                        value,
-                        new_node.test
-                    ],
-                    mark=True
-                )
+                if not is_if :
+                    new_node = ast.If(
+                        test=value,
+                        body=[new_node],
+                        orelse=[],
+                        mark=True
+                    )
+                else:
+                    new_node.test = ast.BoolOp(
+                        op=ast.And(),
+                        values=[
+                            value,
+                            new_node.test
+                        ],
+                        mark=True
+                    )
 
                 change = ChangeNode(node, new_node)
                 change.get_node(self.origin)
