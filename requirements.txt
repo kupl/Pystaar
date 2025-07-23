@@ -8,3 +8,5 @@ rich==13.7.1
 iteration_utilities==0.12.1
 pretty_good_diff==0.1.0
 numpy
+openai
+dotenv
