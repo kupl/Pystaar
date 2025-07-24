@@ -1,6 +1,6 @@
-# PySTAAR: An End-to-End, Extensible Framework for Automated Python Type Error Repair
+# PySTAAR
 
-The repository contains the framework for PySTAAR, for the paper "PySTAAR: An End-to-End, Extensible Framework for Automated Python Type Error Repair".
+PySTAAR is an end-to-end, extensible tool for automated Python type error repair. 
 
 # Installation Guide 
 We recommend using a PySTAAR in a local environment. First, clone the repository:
