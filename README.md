@@ -2,7 +2,7 @@
 
 PySTAAR is an end-to-end, extensible tool for automated Python type error repair. 
 
-# Installation Guide 
+# Installation  
 We recommend using a PySTAAR in a local environment. First, clone the repository:
 
 ```bash
@@ -17,7 +17,7 @@ Next, install the modified version of [pyannotate](https://github.com/dropbox/py
 pip install --use-pep517 -e pyannotate
 ```
 
-# Execution Guide 
+# Execution  
 
 To execute the PySTAAR with existing components, you shold set up OpenAI API key in the environment variable
 ```bash
