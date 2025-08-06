@@ -5,7 +5,7 @@ PySTAAR is an end-to-end, extensible tool for automated Python type error repair
 # Web Interface
 
 PySTAAR provides a web interface for users to interact with the framework.
-You can access the web interface at [PySTAAR Web Interface](http://175.118.126.104:4000).
+You can access the web interface at [PySTAAR Web Interface](https://pystaar.org).
 
 # Installation  
 We recommend using a PySTAAR in a local environment. First, clone the repository:
