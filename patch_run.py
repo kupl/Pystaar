@@ -1,7 +1,7 @@
 import argparse
 import os, sys
 from pathlib import Path
-from run_test import run as run_test
+from run_test_dir.run_test import run as run_test
 from run_fault_localize import run as run_fault_localize
 from run_patch_generate import run as run_patch_generator
 from run_validate import run as run_validator

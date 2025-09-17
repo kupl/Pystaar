@@ -4,8 +4,8 @@ import sys
 
 sys.path.append(str((Path(__file__).parent / "llm_test_generation")))
 
-from llm_run import main as llm_test_generation_main
-from llm_run import Default, available_models, available_frameworks
+from run_test_generation import main as llm_test_generation_main
+from run_test_generation import Default, available_models, available_frameworks
 from patch_run import run as patch_run_main
 
 def run(args):
