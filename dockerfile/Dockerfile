@@ -42,11 +42,19 @@ RUN python3.9 get-pip.py
 # Set the python3.9 as default python
 RUN ln -s /usr/bin/python3.9 /usr/bin/python
 
+# Install pyenv and pyenv-virtualenv
+RUN curl -fsSL https://pyenv.run | bash
+
+RUN echo 'export PYENV_ROOT="/root/.pyenv"' >> ~/.bashrc
+RUN echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+RUN echo 'eval "$(pyenv init - bash)"' >> ~/.bashrc
+RUN echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+
 # Git clone the repository
-RUN git clone https://github.com/kupl/erc-group2-framework.git
+RUN git clone https://github.com/kupl/Pystaar.git
 
 # Set the working directory
-WORKDIR /erc-group2-framework
+WORKDIR /Pystaar
 
 # Install the requirements
 RUN pip install -r requirements.txt
