@@ -20,16 +20,25 @@ def main() :
 
     # Execute new process
     try:
-        result = subprocess.run(
+        process = subprocess.Popen(
             [pyenv_path, "run_test.py",
-             "-s", str(args.src_dir),
-             "-p", str(args.project_dir),
-             "-c", str(args.config)],
-            check=True,
-            capture_output=True,
-            text=True
+            "-s", str(args.src_dir),
+            "-p", str(args.project_dir),
+            "-c", str(args.config)],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=1
         )
-        print("Process output:", result.stdout)
+
+        for line in iter(process.stdout.readline, ''):
+            print(line, end='')
+
+        process.wait()
+
+        if process.returncode != 0:
+            raise subprocess.CalledProcessError(process.returncode, process.args)
+
     except subprocess.CalledProcessError as e:
         print("An error occurred:", e.stderr)
     

@@ -1,0 +1,21 @@
+{
+    "name" : "core",
+    "all" : [
+        "--continue-on-collection-errors", 
+        "--execution-timeout", "300", 
+        "--ignore=tests/components/homekit_controller/test_config_flow.py",
+        "tests"
+    ],
+    "pos" : [
+        "--continue-on-collection-errors", 
+        "--execution-timeout", "300", 
+        "-k", "not (test_pair_form_errors_on_start or test_pair_try_later_errors_on_start)",
+        "tests/components/homekit_controller/test_config_flow.py"
+    ],
+    "neg" : [
+        "--continue-on-collection-errors", 
+        "--execution-timeout", "300",
+        "tests/components/homekit_controller/test_config_flow.py::test_pair_form_errors_on_start",
+        "tests/components/homekit_controller/test_config_flow.py::test_pair_try_later_errors_on_start"
+    ]
+}

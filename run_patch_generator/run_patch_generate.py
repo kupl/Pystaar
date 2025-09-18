@@ -225,7 +225,6 @@ def run(src_dir, config):
 
                                     find_template = FindTemplate()
                                     targets = find_template.get_target(node)
-                                    print(targets)
                                     target = targets[0]
 
                                     save_patch(node, target, filename, config)

@@ -1,0 +1,15 @@
+{
+	"name" : "pandas",
+    "pos" : [
+        "--continue-on-collection-errors", 
+        "--execution-timeout", "300", 
+        "-k", "not test_date_parser_and_names_neg",
+        "benchmark/pandas/pandas/tests/io/parser/test_parse_dates.py"
+    ],
+    "neg" : [
+        "--continue-on-collection-errors", 
+        "--execution-timeout", "300", 
+        "benchmark/pandas/pandas/tests/io/parser/test_parse_dates.py::test_date_parser_and_names_neg"
+    ]
+}
+

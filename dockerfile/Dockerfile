@@ -25,7 +25,9 @@ RUN apt-get update && apt-get install -y \
     python3-openssl \
     git \
     ca-certificates \
-    tzdata
+    tzdata \
+    jq \
+    vim
 
 # Set the timezone
 RUN ln -fs /usr/share/zoneinfo/Asia/Seoul /etc/localtime && \
