@@ -1,14 +1,14 @@
 {
     "name": "salt",
     "pos" : [
-        "--continue-on-collection-errors", 
-        "--execution-timeout", "300", 
-        "-k", "not test_verify_retry_parsing",
-        "tests/unit/test_state.py"
-    ],
+            "--continue-on-collection-errors", 
+            "--execution-timeout", "300", 
+            "-k", "not test_query_null_response",
+            "benchmark/salt/tests/unit/utils/test_http.py"
+        ],
     "neg" : [
         "--continue-on-collection-errors", 
         "--execution-timeout", "300", 
-        "tests/unit/test_state.py::StateCompilerTestCase::test_verify_retry_parsing"
+        "benchmark/salt/tests/unit/utils/test_http.py::HTTPTestCase::test_query_null_response"
     ]
 }

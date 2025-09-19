@@ -975,8 +975,6 @@ def traceback_manager(reverse=False) :
                 raise_info = extract_raise.get_raise_info(file_ast)
             
 
-    #print("SPARTA", ERROR_INFO_LIST)
-
     ERROR_INFO_LIST.append(ERROR_INFO)
 
     empty_count = 0
@@ -985,7 +983,7 @@ def traceback_manager(reverse=False) :
         if not error_info :
             empty_count += 1
             continue
-        # Error가 안났으면 skip
+
         if not error_info.get('tb') :
             return
 
@@ -1022,9 +1020,7 @@ def traceback_manager(reverse=False) :
         '''
 
 
-
-        # cpython, unittest 파일은 제외하기
-        if last_tb.tb_next : # TypeError 하나면, Test 쪽에서 난 거임
+        if last_tb.tb_next :
             while True :
                 test_filename = last_tb.tb_frame.f_code.co_filename
                 test_funcname = last_tb.tb_frame.f_code.co_name
@@ -1073,29 +1069,6 @@ def traceback_manager(reverse=False) :
                 prev_tb.append(tb)
                 last_tb = tb
 
-        '''
-        while last_tb.tb_next :
-            # 대상 함수이면...
-            filename = _filter_filename(last_tb.tb_next.tb_frame.f_code.co_filename)
-            if not filename :
-                ERROR_INFO['error'] = "Call"
-                ERROR_INFO['funcname'] = last_tb.tb_next.tb_frame.f_code.co_name
-                break
-
-            prev_tb = last_tb
-            last_tb = last_tb.tb_next
-        '''
-
-        '''
-        # user가 exception 낸거면 그 이전 함수 이용
-        error_line = traceback.format_tb(last_tb)[0].splitlines()[1]
-
-        if error_line.strip().startswith("raise TypeError") :
-            #ERROR_INFO['error'] = "Call"
-            #ERROR_INFO['funcname'] = last_tb.tb_frame.f_code.co_name
-            prev_tb = prev_tb[:-1]
-        '''
-
         prev_tb.reverse()
 
         prev_arguments = []
@@ -1104,7 +1077,7 @@ def traceback_manager(reverse=False) :
         for i, cur_tb in enumerate(prev_tb) :
             neg_info = dict()
 
-            if i == 0 : # 제일 처음 불러진거
+            if i == 0 :
                 #neg_info['error'] = first_info.get('error', 'No Call')
                 neg_info['funcname'] = cur_tb.tb_frame.f_code.co_name
             else :
@@ -1136,33 +1109,19 @@ def traceback_manager(reverse=False) :
 
             arg_info = inspect.getargvalues(cur_frame)
 
-            #arg_info = copy.deepcopy(arg_info)
-
             skip_keys = []
             for arg in arg_info.locals.keys() :
                 if usage_list :
                     if arg not in usage_list :
                         skip_keys.append(arg)
 
-            # prev argument => 즉, 다음 호출된 함수의 인자들, 이게 존재하면 이거만 확인해보자 일단
-            #prev_arguments = []
-            #prev_arguments.extend(arg_info.args)
-            #prev_arguments.extend([k for k in arg_info.locals.get('kwargs', dict()).keys()])
-
-            #attribute_info = copy.deepcopy(cur_code.co_names) # attribute들
-            #attribute_info = list(filter(lambda attribute : attribute in usage_list, attribute_info))
-
-            # 현재 usage_list에 모든 arg, attribute 호출중
-            # 이거에 맞게 코드 수정 필요
-
-
             tmp_info = dict()
 
             for (arg_name, arg_obj) in arg_info.locals.items() :
-                if arg_name in skip_keys : # skip이면 건너뛰기
+                if arg_name in skip_keys :
                     continue
 
-                def getmembers(object, predicate=None): # inspect꺼임 
+                def getmembers(object, predicate=None):
                     import types
                     """Return all members of an object as (name, value) pairs sorted by name.
                     Optionally, only return members that satisfy a given predicate."""
@@ -1175,7 +1134,7 @@ def traceback_manager(reverse=False) :
                     try :
                         names = dir(object)
                     except Exception:
-                        return [] # pandas interval_index에서 문제가 생겨서 일단 이렇게 처리
+                        return [] 
                     # :dd any DynamicClassAttributes to the list of names if object is a class;
                     # this may result in duplicate entries if, for example, a virtual
                     # attribute with the same name as a DynamicClassAttribute exists
@@ -1213,6 +1172,7 @@ def traceback_manager(reverse=False) :
                             results.append((key, value))
                         processed.add(key)
                     results.sort(key=lambda pair: pair[0])
+
                     return results
 
                 def get_all_member(arg_name, arg_obj, usage_obj, result) :
@@ -1233,42 +1193,18 @@ def traceback_manager(reverse=False) :
                             usage_obj.append(arg_obj)
                             result = get_all_member(name, attr_obj, usage_obj, result)
 
+                            if "FakeDiscovery" in attr_obj.__qualname__:
+                                attr_obj = None
                             result[name] = attr_obj
 
                     return result
                 result = get_all_member(arg_name, arg_obj, [], dict([]))
+
                 tmp_info.update(result)
 
 
             arg_info.locals.update(tmp_info)
             fail_types = prep_select_args(arg_info, skip_keys, subs_list) 
-
-            '''
-            arg_info = inspect.getargvalues(cur_frame)
-            remove_keys = []
-            for arg in arg_info.locals.keys() :
-                if arg not in used_arg :
-                    remove_keys.append(arg)
-
-            for key in remove_keys :
-                arg_info.locals.pop(key)
-
-            attribute_info = cur_frame.f_code.co_names # attribute들
-            attribute_info = list(filter(lambda attribute : attribute in used_arg, attribute_info))
-
-            tmp_info = dict()
-            
-            for (arg_name, arg_obj) in arg_info.locals.items() :
-                attributes = inspect.getmembers(arg_obj)
-
-                for (attr_name, attr_obj) in attributes :
-                    if attr_name in attribute_info :
-                        name = arg_name + '.' + attr_name
-                        tmp_info[name] = attr_obj
-
-            arg_info.locals.update(tmp_info)
-            fail_types = prep_select_args(arg_info) 
-            '''
 
             pos_args = fail_types[0]
             fail_args = dict()
@@ -1285,8 +1221,6 @@ def traceback_manager(reverse=False) :
             info['info'] = neg_info
             info['args'] = fail_args
 
-            #print("Before : ", info)
-            #global ERROR_LIST
             info_list = add_info(info, info_list)
 
 
@@ -1428,7 +1362,6 @@ TEST_SETUP_ENTRY = False
 NEGATIVE_INFO = None
 
 def async_end(fut) :
-    print("Async End")
     global TEST_FUNC_ASYNC
     TEST_FUNC_ASYNC = False
 
@@ -1717,7 +1650,7 @@ def _trace_dispatch(frame, event, arg):
 
     if TEST_FUNC is not None :
         if TEST_FUNC_ASYNC is False :
-            #print(ERROR_INFO)
+            # print(ERROR_INFO)
             ERROR_INFO_LIST.append(ERROR_INFO)
             ERROR_INFO = dict()
             TEST_FUNC_ENTRY = False
@@ -1758,7 +1691,7 @@ def _trace_dispatch(frame, event, arg):
     # Get counter for this code object.  Bail if we don't care about this function.
     # An explicit None is stored in the table when we no longer care.
     code = frame.f_code
-    key = (id(code), code.co_name) # 왜인지 모르겠지만 다른 함수인데 code id가 같은 경우가 존재
+    key = (id(code), code.co_name)
     
     #print(frame.f_lineno)
 
@@ -1797,15 +1730,10 @@ def _trace_dispatch(frame, event, arg):
         # Ignore other events, such as c_call and c_return.
         return
 
-    # 내가 고쳐야 할 것 #
-    '''
-    TODO : 일반 변수들도 탐색이 되어야함
-    '''
 
 
     # Track calls under current directory only.
-    #filename = code.co_filename # 외부함수까지 포함
-    filename = _filter_filename(code.co_filename) # 외부함수 비포함
+    filename = _filter_filename(code.co_filename) 
     #func_name = get_function_name_from_frame(frame)
     #print(event, filename, func_name)
     
@@ -1813,6 +1741,7 @@ def _trace_dispatch(frame, event, arg):
         func_name = get_function_name_from_frame(frame)
 
         arg_info = inspect.getargvalues(frame)
+
         #if func_name == 'read_csv' or func_name == '_refine_defaults_read' :
         #    print(arg_info.locals)
         
