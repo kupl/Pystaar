@@ -3,12 +3,12 @@
     "pos" : [
         "--continue-on-collection-errors", 
         "--execution-timeout", "300", 
-        "-k", "not test_report_speaker_volume",
-        "benchmark/core/tests/components/alexa/test_capabilities.py"
+        "-k", "not test_tracked_devices",
+        "benchmark/core/tests/components/unifi/test_device_tracker.py"
     ],
     "neg" : [
         "--continue-on-collection-errors", 
         "--execution-timeout", "300",
-        "benchmark/core/tests/components/alexa/test_capabilities.py::test_report_speaker_volume"
+        "benchmark/core/tests/components/unifi/test_device_tracker.py::test_tracked_devices"
     ]
 }

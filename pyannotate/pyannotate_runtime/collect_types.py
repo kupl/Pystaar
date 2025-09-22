@@ -939,9 +939,13 @@ CLEAR_FRAME = False
 ADDITIONAL_INFO = dict()
 
 TEST_OPTION = None
+RUN_DIR = os.getcwd()
 
 def traceback_manager(reverse=False) :
-    global ERROR_INFO, ERROR_INFO_LIST, ERROR_LIST
+    global ERROR_INFO, ERROR_INFO_LIST, ERROR_LIST, RUN_DIR
+
+    # change to run_dir
+    os.chdir(RUN_DIR)
 
     info_list = list()
     constant_dict = dict()
@@ -965,7 +969,8 @@ def traceback_manager(reverse=False) :
                 if sys.version_info[0] < 3:
                     file_code = open(test_filename, 'r').read()
                 else :
-                    file_code = open(test_filename, 'r', -1, "utf-8").read()
+                    with open(test_filename, 'r', encoding="utf-8") as f:
+                        file_code = f.read()
                 file_ast = ast.parse(file_code)
 
                 extract_constant = ExtractConstant(test_funcname)
