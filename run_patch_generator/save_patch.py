@@ -12,9 +12,10 @@ from const import (
 import json
 
 PATCH_COUNT = 0
+PATCH_SET = set()
 
 def save_patch(patch, target, filename, config, patch_info={}):
-    global PATCH_COUNT
+    global PATCH_COUNT, PATCH_SET
 
     skip = False
     for child in ast.walk(target) :
@@ -25,12 +26,18 @@ def save_patch(patch, target, filename, config, patch_info={}):
     if skip :
         return
 
+    patch_code = ast.unparse(patch)
+    if patch_code in PATCH_SET :
+        return
+    
+    PATCH_SET.add(patch_code)
+
     directory = get_info_directory(config)
     if not os.path.exists(directory / PATCH_GENERATE_FOLDER_NAME):
         os.makedirs(directory / PATCH_GENERATE_FOLDER_NAME)
 
     with open(directory / PATCH_GENERATE_FOLDER_NAME / f'{PATCH_COUNT+1}.py', 'w') as f:
-        f.write(ast.unparse(patch))
+        f.write(patch_code)
     
     with open(directory / PATCH_GENERATE_FOLDER_NAME / f'{PATCH_COUNT+1}-target.py', 'w') as f:
         f.write(ast.unparse(target))

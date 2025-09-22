@@ -136,14 +136,10 @@ def run(src_dir, config):
                     (filename, funcname, localize_line) = localize['localize']
                     arg_name = localize['info']['name']
 
+                    neg_file_node = None
+
                     for neg_info in neg_infos :
                         (neg_filename, neg_funcname) = get_neg_filename_funcname(neg_info)
-
-                        try:
-                            neg_file_node = deepcopy(files[neg_filename])
-                        except Exception as e :
-                            logger.debug(neg_filename + " not exists")
-                            continue
 
                         if neg_filename == filename and neg_funcname == funcname :
                             neg_args = dict()
@@ -178,8 +174,11 @@ def run(src_dir, config):
                                     continue
                                 typ = normalize_type(typ)
                                 pos_typs.add(typ)
-                    error_stmt = extract_info.find_error_stmt(neg_file_node, int(localize_line))
 
+                    if not neg_file_node:
+                        continue
+                    
+                    error_stmt = extract_info.find_error_stmt(neg_file_node, int(localize_line))
 
                     error_is_if_stmt = False
                     if isinstance(error_stmt, ast.If) :
@@ -232,6 +231,9 @@ def run(src_dir, config):
                         if len(pos_typs) >= 1 :
                             var_score = dict()
                             arg_node = None
+
+                            if not error_stmt:
+                                return 
                             arg_node = find_node(error_stmt)
                             abs_pos_typs = tuple(set(abstract_type_list(pos_typs)))
                                 

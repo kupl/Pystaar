@@ -1193,8 +1193,6 @@ def traceback_manager(reverse=False) :
                             usage_obj.append(arg_obj)
                             result = get_all_member(name, attr_obj, usage_obj, result)
 
-                            if "FakeDiscovery" in attr_obj.__qualname__:
-                                attr_obj = None
                             result[name] = attr_obj
 
                     return result
