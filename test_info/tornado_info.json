@@ -1,0 +1,14 @@
+{
+    "name": "tornado",
+    "pos" : [
+        "--continue-on-collection-errors", 
+        "--execution-timeout", "300", 
+        "-k", "not test_xsrf_fail_argument_invalid_format",
+        "tornado/test/web_test.py"
+    ],
+    "neg" : [
+        "--continue-on-collection-errors", 
+        "--execution-timeout", "300", 
+        "tornado/test/web_test.py::XSRFTest::test_xsrf_fail_argument_invalid_format"
+    ]
+}
