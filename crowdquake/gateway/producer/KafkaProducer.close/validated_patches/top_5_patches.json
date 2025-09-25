@@ -1,0 +1,20 @@
+[
+    {
+        "patch_id": 7,
+        "patch_file_path": "example/crowdquake/gateway/producer/KafkaProducer.close/validated_patches/7.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+        "diff": "--- Original\n+++ Patched\n@@ -54,7 +54,9 @@\n     :return: None\n     \"\"\"\n         logger.info(f'Flush remains for {self._linger_close_second} seconds...')\n-        self._producer.flush(self._linger_close_second)\n+        import example\n+        if not isinstance(self, example.crowdquake.gateway.producer.src.gateway.core.producer.KafkaProducer):\n+            self._producer.flush(self._linger_close_second)\n         logger.info(f'Remains: {len(self._producer)}')\n \n     def produce(self, topic: str, key: bytes, value: bytes, on_delivery=None) -> None:"
+    },
+    {
+        "patch_id": 105,
+        "patch_file_path": "example/crowdquake/gateway/producer/KafkaProducer.close/validated_patches/105.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+        "diff": "--- Original\n+++ Patched\n@@ -54,7 +54,9 @@\n     :return: None\n     \"\"\"\n         logger.info(f'Flush remains for {self._linger_close_second} seconds...')\n-        self._producer.flush(self._linger_close_second)\n+        import types\n+        if not isinstance(self._producer.flush, types.BuiltinFunctionType):\n+            self._producer.flush(self._linger_close_second)\n         logger.info(f'Remains: {len(self._producer)}')\n \n     def produce(self, topic: str, key: bytes, value: bytes, on_delivery=None) -> None:"
+    },
+    {
+        "patch_id": 130,
+        "patch_file_path": "example/crowdquake/gateway/producer/KafkaProducer.close/validated_patches/130.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+        "diff": "--- Original\n+++ Patched\n@@ -53,7 +53,9 @@\n \n     :return: None\n     \"\"\"\n-        logger.info(f'Flush remains for {self._linger_close_second} seconds...')\n+        import types\n+        if not isinstance(self._producer.flush, types.BuiltinFunctionType):\n+            logger.info(f'Flush remains for {self._linger_close_second} seconds...')\n         self._producer.flush(self._linger_close_second)\n         logger.info(f'Remains: {len(self._producer)}')\n "
+    }
+]

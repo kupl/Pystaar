@@ -1,0 +1,41 @@
+[
+    {
+        "idx": [
+            0,
+            1,
+            2
+        ],
+        "info": {
+            "funcname": "produce",
+            "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+            "classname": "KafkaProducer.produce",
+            "line": 72
+        },
+        "args": {
+            "self": [
+                "example.crowdquake.gateway.producer.src.gateway.core.producer.KafkaProducer"
+            ],
+            "topic": [
+                "str",
+                "int"
+            ],
+            "key": [
+                "bytes",
+                "int"
+            ],
+            "value": [
+                "bytes",
+                "int"
+            ],
+            "on_delivery": [
+                "None"
+            ],
+            "self._producer.produce": [
+                "builtin_function_or_method"
+            ],
+            "self._producer": [
+                "cimpl.Producer"
+            ]
+        }
+    }
+]

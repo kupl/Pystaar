@@ -1,0 +1,48 @@
+[
+    {
+        "idx": [
+            0,
+            2
+        ],
+        "info": {
+            "funcname": "add",
+            "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+            "classname": "Stat.add",
+            "line": 40
+        },
+        "args": {
+            "self": [
+                "example.crowdquake.gateway.stat.src.gateway.core.stat.Stat"
+            ],
+            "iteration": [
+                "str",
+                "None"
+            ],
+            "self._sampling": [
+                "int"
+            ]
+        }
+    },
+    {
+        "idx": [
+            1
+        ],
+        "info": {
+            "funcname": "add",
+            "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+            "classname": "Stat.add",
+            "line": 46
+        },
+        "args": {
+            "self": [
+                "example.crowdquake.gateway.stat.src.gateway.core.stat.Stat"
+            ],
+            "msg_length": [
+                "str"
+            ],
+            "self._window_bytes": [
+                "int"
+            ]
+        }
+    }
+]

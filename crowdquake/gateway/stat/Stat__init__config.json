@@ -1,0 +1,16 @@
+{
+    "name": "Stat.__init__",
+    "pos" : [
+        "--continue-on-collection-errors", 
+        "--execution-timeout", "300", 
+        "-k", "not neg",
+        "example/crowdquake/gateway/stat/test/Stat__init___pos_test.py"
+    ],
+    "neg" : [
+        "--continue-on-collection-errors", 
+        "--execution-timeout", "300", 
+        "example/crowdquake/gateway/stat/test/Stat__init___neg_test.py::test_neg_1",
+        "example/crowdquake/gateway/stat/test/Stat__init___neg_test.py::test_neg_2",
+        "example/crowdquake/gateway/stat/test/Stat__init___neg_test.py::test_neg_3"
+    ]
+}

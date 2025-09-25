@@ -283,7 +283,7 @@ class TemplateCompeleter(ast.NodeVisitor) :
         # raise_info = self.neg_additional['raise']
         # raise_list = list()
         # #print(raise_info)
-        # if raise_info and raise_info[0] : # raise가 필요한게 있다면...
+        # if raise_info and raise_info[0] :
         #     for i, raise_id in enumerate(raise_info[0]) :
         #         if raise_info[1] and raise_info[1][i] != '':
         #             raise_stmt = ast.Raise(

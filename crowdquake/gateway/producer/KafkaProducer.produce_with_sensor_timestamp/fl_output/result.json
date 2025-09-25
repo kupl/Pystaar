@@ -1,0 +1,364 @@
+[
+    {
+        "1": [
+            {
+                "info": {
+                    "name": "topic",
+                    "diff": {
+                        "str": 20
+                    },
+                    "diff_total": 20,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "82"
+                ]
+            }
+        ],
+        "0.375": [
+            {
+                "info": {
+                    "name": "topic",
+                    "diff": {
+                        "str": 20
+                    },
+                    "diff_total": 20,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "79"
+                ]
+            }
+        ]
+    },
+    {
+        "1": [
+            {
+                "info": {
+                    "name": "value",
+                    "diff": {
+                        "bytes": 10
+                    },
+                    "diff_total": 10,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "82"
+                ]
+            }
+        ],
+        "0.375": [
+            {
+                "info": {
+                    "name": "value",
+                    "diff": {
+                        "bytes": 10
+                    },
+                    "diff_total": 10,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "79"
+                ]
+            }
+        ]
+    },
+    {
+        "1": [
+            {
+                "info": {
+                    "name": "self",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "82"
+                ]
+            },
+            {
+                "info": {
+                    "name": "key",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "82"
+                ]
+            },
+            {
+                "info": {
+                    "name": "on_delivery",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "82"
+                ]
+            },
+            {
+                "info": {
+                    "name": "headers",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "82"
+                ]
+            },
+            {
+                "info": {
+                    "name": "self._producer.produce",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "82"
+                ]
+            },
+            {
+                "info": {
+                    "name": "self._producer",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "82"
+                ]
+            }
+        ],
+        "0.375": [
+            {
+                "info": {
+                    "name": "self",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "79"
+                ]
+            },
+            {
+                "info": {
+                    "name": "key",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "79"
+                ]
+            },
+            {
+                "info": {
+                    "name": "on_delivery",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "79"
+                ]
+            },
+            {
+                "info": {
+                    "name": "headers",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "79"
+                ]
+            },
+            {
+                "info": {
+                    "name": "self._producer.produce",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "79"
+                ]
+            },
+            {
+                "info": {
+                    "name": "self._producer",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 10,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "funcname": "produce_with_sensor_timestamp",
+                    "line": 82,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+                    "produce_with_sensor_timestamp",
+                    "79"
+                ]
+            }
+        ]
+    }
+]

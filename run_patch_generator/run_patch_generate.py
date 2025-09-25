@@ -136,6 +136,9 @@ def run(src_dir, config):
                     (filename, funcname, localize_line) = localize['localize']
                     arg_name = localize['info']['name']
 
+                    if arg_name == 'self':
+                        continue
+
                     neg_file_node = None
 
                     for neg_info in neg_infos :
@@ -174,6 +177,8 @@ def run(src_dir, config):
                                     continue
                                 typ = normalize_type(typ)
                                 pos_typs.add(typ)
+                            
+                            break
 
                     if not neg_file_node:
                         continue
@@ -332,6 +337,9 @@ def run(src_dir, config):
                     else :   
                         neg_guard()    
                         pos_guard()
+
+                    neg_file_node = deepcopy(files[neg_filename])
+                    error_stmt = extract_info.find_error_stmt(neg_file_node, int(localize_line))
 
                     stmt_hole_list = []
 

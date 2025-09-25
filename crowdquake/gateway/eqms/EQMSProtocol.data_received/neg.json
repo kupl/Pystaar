@@ -1,0 +1,47 @@
+[
+    {
+        "idx": [
+            0,
+            2
+        ],
+        "info": {
+            "funcname": "data_received",
+            "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/eqms/src/gateway/core/eqms.py",
+            "classname": "EQMSProtocol.data_received",
+            "line": 138
+        },
+        "args": {
+            "self": [
+                "example.crowdquake.gateway.eqms.src.gateway.core.eqms.EQMSProtocol"
+            ],
+            "data": [
+                "int"
+            ],
+            "self._inbound_bytes": [
+                "int"
+            ]
+        }
+    },
+    {
+        "idx": [
+            1
+        ],
+        "info": {
+            "funcname": "data_received",
+            "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/eqms/src/gateway/core/eqms.py",
+            "classname": "EQMSProtocol.data_received",
+            "line": 136
+        },
+        "args": {
+            "self": [
+                "example.crowdquake.gateway.eqms.src.gateway.core.eqms.EQMSProtocol"
+            ],
+            "data": [
+                "str"
+            ],
+            "self._buf": [
+                "bytearray"
+            ]
+        }
+    }
+]

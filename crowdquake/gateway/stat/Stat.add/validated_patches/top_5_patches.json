@@ -1,0 +1,32 @@
+[
+    {
+        "patch_id": 181,
+        "patch_file_path": "example/crowdquake/gateway/stat/Stat.add/validated_patches/181.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "diff": "--- Original\n+++ Patched\n@@ -35,7 +35,10 @@\n \n     def add(self, iteration: int, latency: float, msg_length: int):\n         if iteration % self._sampling == 0:\n-            self._window_latencies.append(latency)\n+            if isinstance(msg_length, str):\n+                return ''\n+            else:\n+                self._window_latencies.append(latency)\n         self.window_max_latency = latency\n         self._window_total_latency += latency\n         self._window_count += 1"
+    },
+    {
+        "patch_id": 182,
+        "patch_file_path": "example/crowdquake/gateway/stat/Stat.add/validated_patches/182.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "diff": "--- Original\n+++ Patched\n@@ -35,7 +35,10 @@\n \n     def add(self, iteration: int, latency: float, msg_length: int):\n         if iteration % self._sampling == 0:\n-            self._window_latencies.append(latency)\n+            if isinstance(msg_length, str):\n+                return b''\n+            else:\n+                self._window_latencies.append(latency)\n         self.window_max_latency = latency\n         self._window_total_latency += latency\n         self._window_count += 1"
+    },
+    {
+        "patch_id": 183,
+        "patch_file_path": "example/crowdquake/gateway/stat/Stat.add/validated_patches/183.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "diff": "--- Original\n+++ Patched\n@@ -35,7 +35,10 @@\n \n     def add(self, iteration: int, latency: float, msg_length: int):\n         if iteration % self._sampling == 0:\n-            self._window_latencies.append(latency)\n+            if isinstance(msg_length, str):\n+                return None\n+            else:\n+                self._window_latencies.append(latency)\n         self.window_max_latency = latency\n         self._window_total_latency += latency\n         self._window_count += 1"
+    },
+    {
+        "patch_id": 184,
+        "patch_file_path": "example/crowdquake/gateway/stat/Stat.add/validated_patches/184.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "diff": "--- Original\n+++ Patched\n@@ -35,7 +35,10 @@\n \n     def add(self, iteration: int, latency: float, msg_length: int):\n         if iteration % self._sampling == 0:\n-            self._window_latencies.append(latency)\n+            if isinstance(msg_length, str):\n+                return 0\n+            else:\n+                self._window_latencies.append(latency)\n         self.window_max_latency = latency\n         self._window_total_latency += latency\n         self._window_count += 1"
+    },
+    {
+        "patch_id": 185,
+        "patch_file_path": "example/crowdquake/gateway/stat/Stat.add/validated_patches/185.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "diff": "--- Original\n+++ Patched\n@@ -35,7 +35,10 @@\n \n     def add(self, iteration: int, latency: float, msg_length: int):\n         if iteration % self._sampling == 0:\n-            self._window_latencies.append(latency)\n+            if isinstance(msg_length, str):\n+                return False\n+            else:\n+                self._window_latencies.append(latency)\n         self.window_max_latency = latency\n         self._window_total_latency += latency\n         self._window_count += 1"
+    }
+]

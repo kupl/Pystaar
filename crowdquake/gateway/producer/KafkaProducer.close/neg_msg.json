@@ -1,0 +1,11 @@
+[
+    {
+        "msg": "must be real number, not str"
+    },
+    {
+        "msg": "must be real number, not NoneType"
+    },
+    {
+        "msg": "must be real number, not list"
+    }
+]

@@ -105,14 +105,16 @@ def run(src_dir, config) :
             if 'patchType' in patch_info:
                 if patch_info['patchType'] == 'return':
                     neg_args = patch_info['neg_args']
-                    node = ast.parse(patch_info['node'])
+                    node = patch
                     infer = ReturnInference(target, neg_args, node, pos_func_infos)
                     infer_list = infer.get_return_typ_list(node)
+
+                    if patch_info['patchValue'] in infer_list:
+                        infer_list.remove(patch_info['patchValue'])
 
                     if patch_info['patchValue'] not in infer_list:
                         no_plausible_patches.append(i)
                         continue
-
 
             exec_prog = Execute(src_dir, project_name, pytest_info)
             try:

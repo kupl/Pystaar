@@ -1,0 +1,11 @@
+[
+    {
+        "msg": "cannot convert 'str' object to bytes"
+    },
+    {
+        "msg": "cannot convert 'int' object to bytes"
+    },
+    {
+        "msg": "cannot convert 'NoneType' object to bytes"
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "patch_id": 13,
+        "patch_file_path": "example/crowdquake/gateway/eqms/EQMSProtocol.data_received/validated_patches/13.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/eqms/src/gateway/core/eqms.py",
+        "diff": "--- Original\n+++ Patched\n@@ -103,6 +103,9 @@\n             with self._capture_file.open('ab') as f:\n                 f.write(data)\n         self._buf += bytearray(data)\n+        import example\n+        if isinstance(self, example.crowdquake.gateway.eqms.src.gateway.core.eqms.EQMSProtocol):\n+            return None\n         self._inbound_bytes += len(data)\n         view = memoryview(self._buf)\n         consumed = 0"
+    },
+    {
+        "patch_id": 14,
+        "patch_file_path": "example/crowdquake/gateway/eqms/EQMSProtocol.data_received/validated_patches/14.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/eqms/src/gateway/core/eqms.py",
+        "diff": "--- Original\n+++ Patched\n@@ -102,6 +102,9 @@\n         if self._capture_mode:\n             with self._capture_file.open('ab') as f:\n                 f.write(data)\n+        import example\n+        if isinstance(self, example.crowdquake.gateway.eqms.src.gateway.core.eqms.EQMSProtocol):\n+            return 0\n         self._buf += bytearray(data)\n         self._inbound_bytes += len(data)\n         view = memoryview(self._buf)"
+    },
+    {
+        "patch_id": 15,
+        "patch_file_path": "example/crowdquake/gateway/eqms/EQMSProtocol.data_received/validated_patches/15.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/eqms/src/gateway/core/eqms.py",
+        "diff": "--- Original\n+++ Patched\n@@ -102,6 +102,9 @@\n         if self._capture_mode:\n             with self._capture_file.open('ab') as f:\n                 f.write(data)\n+        import example\n+        if isinstance(self, example.crowdquake.gateway.eqms.src.gateway.core.eqms.EQMSProtocol):\n+            return False\n         self._buf += bytearray(data)\n         self._inbound_bytes += len(data)\n         view = memoryview(self._buf)"
+    },
+    {
+        "patch_id": 16,
+        "patch_file_path": "example/crowdquake/gateway/eqms/EQMSProtocol.data_received/validated_patches/16.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/eqms/src/gateway/core/eqms.py",
+        "diff": "--- Original\n+++ Patched\n@@ -102,6 +102,9 @@\n         if self._capture_mode:\n             with self._capture_file.open('ab') as f:\n                 f.write(data)\n+        import example\n+        if isinstance(self, example.crowdquake.gateway.eqms.src.gateway.core.eqms.EQMSProtocol):\n+            return True\n         self._buf += bytearray(data)\n         self._inbound_bytes += len(data)\n         view = memoryview(self._buf)"
+    },
+    {
+        "patch_id": 17,
+        "patch_file_path": "example/crowdquake/gateway/eqms/EQMSProtocol.data_received/validated_patches/17.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/eqms/src/gateway/core/eqms.py",
+        "diff": "--- Original\n+++ Patched\n@@ -102,6 +102,9 @@\n         if self._capture_mode:\n             with self._capture_file.open('ab') as f:\n                 f.write(data)\n+        import example\n+        if isinstance(self, example.crowdquake.gateway.eqms.src.gateway.core.eqms.EQMSProtocol):\n+            return ''\n         self._buf += bytearray(data)\n         self._inbound_bytes += len(data)\n         view = memoryview(self._buf)"
+    }
+]

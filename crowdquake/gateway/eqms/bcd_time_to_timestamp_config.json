@@ -1,0 +1,16 @@
+{
+    "name": "bcd_time_to_timestamp",
+    "pos" : [
+        "--continue-on-collection-errors", 
+        "--execution-timeout", "300", 
+        "-k", "not neg",
+        "example/crowdquake/gateway/eqms/test/bcd_time_to_timestamp_neg_test.py"
+    ],
+    "neg" : [
+        "--continue-on-collection-errors", 
+        "--execution-timeout", "300", 
+        "example/crowdquake/gateway/eqms/test/bcd_time_to_timestamp_neg_test.py::test_neg_1",
+        "example/crowdquake/gateway/eqms/test/bcd_time_to_timestamp_neg_test.py::test_neg_2",
+        "example/crowdquake/gateway/eqms/test/bcd_time_to_timestamp_neg_test.py::test_neg_3"
+    ]
+}

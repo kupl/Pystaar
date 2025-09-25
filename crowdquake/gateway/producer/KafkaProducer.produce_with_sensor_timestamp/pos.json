@@ -1,0 +1,19 @@
+{
+    "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py": {
+        "82": [
+            {
+                "info": {
+                    "self": "example.crowdquake.gateway.producer.src.gateway.core.producer.KafkaProducer",
+                    "topic": "str",
+                    "key": "bytes",
+                    "value": "bytes",
+                    "on_delivery": "None",
+                    "headers": "Dict[str => bytes]",
+                    "self._producer.produce": "builtin_function_or_method",
+                    "self._producer": "cimpl.Producer"
+                },
+                "samples": 10
+            }
+        ]
+    }
+}

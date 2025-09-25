@@ -1,0 +1,1 @@
+not isinstance(self, example.crowdquake.gateway.eqms.src.gateway.core.eqms.EQMSProtocol) and self._capture_mode

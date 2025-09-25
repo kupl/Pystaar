@@ -1,0 +1,32 @@
+[
+    {
+        "patch_id": 122,
+        "patch_file_path": "example/crowdquake/gateway/producer/KafkaProducer.produce_with_sensor_timestamp/validated_patches/122.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+        "diff": "--- Original\n+++ Patched\n@@ -63,5 +63,9 @@\n \n     def produce_with_sensor_timestamp(self, topic: str, key: bytes, value: bytes, timestamp: int, on_delivery=None) -> None:\n         headers = {'timestamp': timestamp.to_bytes(8, 'little', signed=False)}\n+        if isinstance(value, bytes):\n+            return bytes(value)\n+        elif isinstance(value, int):\n+            value = bytes(value)\n         self._producer.produce(topic=topic, key=key, value=value, on_delivery=on_delivery, headers=headers)\n         self._producer.poll(0)"
+    },
+    {
+        "patch_id": 232,
+        "patch_file_path": "example/crowdquake/gateway/producer/KafkaProducer.produce_with_sensor_timestamp/validated_patches/232.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+        "diff": "--- Original\n+++ Patched\n@@ -62,6 +62,10 @@\n         self._producer.poll(0)\n \n     def produce_with_sensor_timestamp(self, topic: str, key: bytes, value: bytes, timestamp: int, on_delivery=None) -> None:\n+        if isinstance(value, bytes):\n+            return bytes(value)\n+        elif isinstance(value, int):\n+            value = bytes(value)\n         headers = {'timestamp': timestamp.to_bytes(8, 'little', signed=False)}\n         self._producer.produce(topic=topic, key=key, value=value, on_delivery=on_delivery, headers=headers)\n         self._producer.poll(0)"
+    },
+    {
+        "patch_id": 299,
+        "patch_file_path": "example/crowdquake/gateway/producer/KafkaProducer.produce_with_sensor_timestamp/validated_patches/299.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+        "diff": "--- Original\n+++ Patched\n@@ -63,5 +63,7 @@\n \n     def produce_with_sensor_timestamp(self, topic: str, key: bytes, value: bytes, timestamp: int, on_delivery=None) -> None:\n         headers = {'timestamp': timestamp.to_bytes(8, 'little', signed=False)}\n-        self._producer.produce(topic=topic, key=key, value=value, on_delivery=on_delivery, headers=headers)\n+        import example\n+        if not isinstance(self, example.crowdquake.gateway.producer.src.gateway.core.producer.KafkaProducer):\n+            self._producer.produce(topic=topic, key=key, value=value, on_delivery=on_delivery, headers=headers)\n         self._producer.poll(0)"
+    },
+    {
+        "patch_id": 312,
+        "patch_file_path": "example/crowdquake/gateway/producer/KafkaProducer.produce_with_sensor_timestamp/validated_patches/312.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+        "diff": "--- Original\n+++ Patched\n@@ -63,5 +63,6 @@\n \n     def produce_with_sensor_timestamp(self, topic: str, key: bytes, value: bytes, timestamp: int, on_delivery=None) -> None:\n         headers = {'timestamp': timestamp.to_bytes(8, 'little', signed=False)}\n-        self._producer.produce(topic=topic, key=key, value=value, on_delivery=on_delivery, headers=headers)\n+        if not isinstance(key, bytes):\n+            self._producer.produce(topic=topic, key=key, value=value, on_delivery=on_delivery, headers=headers)\n         self._producer.poll(0)"
+    },
+    {
+        "patch_id": 331,
+        "patch_file_path": "example/crowdquake/gateway/producer/KafkaProducer.produce_with_sensor_timestamp/validated_patches/331.py",
+        "target_file_path": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+        "diff": "--- Original\n+++ Patched\n@@ -63,5 +63,6 @@\n \n     def produce_with_sensor_timestamp(self, topic: str, key: bytes, value: bytes, timestamp: int, on_delivery=None) -> None:\n         headers = {'timestamp': timestamp.to_bytes(8, 'little', signed=False)}\n-        self._producer.produce(topic=topic, key=key, value=value, on_delivery=on_delivery, headers=headers)\n+        if not isinstance(on_delivery, type(None)):\n+            self._producer.produce(topic=topic, key=key, value=value, on_delivery=on_delivery, headers=headers)\n         self._producer.poll(0)"
+    }
+]

@@ -23,7 +23,7 @@ class FindTargetFunc(ast.NodeVisitor) :
         self.function_node = prev
 
     def generic_visit(self, node) :
-        if ast.unparse(node) is ast.unparse(self.target) :
+        if ast.unparse(node) == ast.unparse(self.target) :
             raise Exception
 
         super().generic_visit(node)

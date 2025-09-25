@@ -1,0 +1,8 @@
+[
+    {
+        "msg": "'int' object is not subscriptable"
+    },
+    {
+        "msg": "'float' object is not subscriptable"
+    }
+]

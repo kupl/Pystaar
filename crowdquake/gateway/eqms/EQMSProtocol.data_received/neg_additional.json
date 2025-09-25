@@ -1,0 +1,17 @@
+{
+    "raise": [
+        [],
+        []
+    ],
+    "constant": {
+        "bool": [
+            false
+        ],
+        "NoneType": [
+            null
+        ],
+        "str": [
+            ""
+        ]
+    }
+}

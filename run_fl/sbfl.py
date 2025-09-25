@@ -27,7 +27,7 @@ class Sbfl():
             
             sbfl_score = [tuple(split_key)] + sbfl_score
             sbfl[score] = sbfl_score
-
+            
         sbfl = dict(sorted(sbfl.items(), key=lambda item : item[0], reverse=True))
 
         return sbfl

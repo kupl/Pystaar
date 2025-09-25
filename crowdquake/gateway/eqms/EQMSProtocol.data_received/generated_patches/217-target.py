@@ -1,0 +1,1 @@
+not isinstance(data, str) and self._capture_mode

@@ -1,0 +1,44 @@
+[
+    {
+        "idx": [
+            0,
+            1,
+            2
+        ],
+        "info": {
+            "funcname": "produce_with_sensor_timestamp",
+            "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/producer/src/gateway/core/producer.py",
+            "classname": "KafkaProducer.produce_with_sensor_timestamp",
+            "line": 82
+        },
+        "args": {
+            "self": [
+                "example.crowdquake.gateway.producer.src.gateway.core.producer.KafkaProducer"
+            ],
+            "topic": [
+                "int",
+                "None",
+                "str"
+            ],
+            "key": [
+                "bytes"
+            ],
+            "value": [
+                "bytes",
+                "int"
+            ],
+            "on_delivery": [
+                "None"
+            ],
+            "headers": [
+                "Dict[str => bytes]"
+            ],
+            "self._producer.produce": [
+                "builtin_function_or_method"
+            ],
+            "self._producer": [
+                "cimpl.Producer"
+            ]
+        }
+    }
+]

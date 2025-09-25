@@ -1,0 +1,170 @@
+[
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "40",
+        "target_var": "iteration",
+        "rank_by_function": 1,
+        "score": 1
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "46",
+        "target_var": "msg_length",
+        "rank_by_function": 2,
+        "score": 1
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "40",
+        "target_var": "msg_length",
+        "rank_by_function": 2,
+        "score": 0.375
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "45",
+        "target_var": "msg_length",
+        "rank_by_function": 2,
+        "score": 0.167
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "44",
+        "target_var": "msg_length",
+        "rank_by_function": 2,
+        "score": 0.167
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "43",
+        "target_var": "msg_length",
+        "rank_by_function": 2,
+        "score": 0.167
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "41",
+        "target_var": "msg_length",
+        "rank_by_function": 2,
+        "score": 0.167
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "40",
+        "target_var": "self",
+        "rank_by_function": 3,
+        "score": 1
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "40",
+        "target_var": "self._sampling",
+        "rank_by_function": 3,
+        "score": 1
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "46",
+        "target_var": "self",
+        "rank_by_function": 3,
+        "score": 1
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "46",
+        "target_var": "self._window_bytes",
+        "rank_by_function": 3,
+        "score": 1
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "40",
+        "target_var": "self",
+        "rank_by_function": 3,
+        "score": 0.375
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "40",
+        "target_var": "self._window_bytes",
+        "rank_by_function": 3,
+        "score": 0.375
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "45",
+        "target_var": "self",
+        "rank_by_function": 3,
+        "score": 0.167
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "44",
+        "target_var": "self",
+        "rank_by_function": 3,
+        "score": 0.167
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "43",
+        "target_var": "self",
+        "rank_by_function": 3,
+        "score": 0.167
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "41",
+        "target_var": "self",
+        "rank_by_function": 3,
+        "score": 0.167
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "45",
+        "target_var": "self._window_bytes",
+        "rank_by_function": 3,
+        "score": 0.167
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "44",
+        "target_var": "self._window_bytes",
+        "rank_by_function": 3,
+        "score": 0.167
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "43",
+        "target_var": "self._window_bytes",
+        "rank_by_function": 3,
+        "score": 0.167
+    },
+    {
+        "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+        "funcname": "add",
+        "localize_line": "41",
+        "target_var": "self._window_bytes",
+        "rank_by_function": 3,
+        "score": 0.167
+    }
+]

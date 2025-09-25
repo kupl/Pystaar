@@ -1,0 +1,102 @@
+[
+    {
+        "1": [
+            {
+                "info": {
+                    "name": "num_window_size",
+                    "diff": {
+                        "int": 15
+                    },
+                    "diff_total": 15,
+                    "equal": 0,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+                    "funcname": "__init__",
+                    "line": 11,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+                    "__init__",
+                    "11"
+                ]
+            }
+        ],
+        "0.375": [
+            {
+                "info": {
+                    "name": "num_window_size",
+                    "diff": {
+                        "int": 15
+                    },
+                    "diff_total": 15,
+                    "equal": 0,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+                    "funcname": "__init__",
+                    "line": 11,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+                    "__init__",
+                    "10"
+                ]
+            }
+        ]
+    },
+    {
+        "1": [
+            {
+                "info": {
+                    "name": "self",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 5,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+                    "funcname": "__init__",
+                    "line": 11,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+                    "__init__",
+                    "11"
+                ]
+            }
+        ],
+        "0.375": [
+            {
+                "info": {
+                    "name": "self",
+                    "diff": {},
+                    "diff_total": 0,
+                    "equal": 5,
+                    "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+                    "funcname": "__init__",
+                    "line": 11,
+                    "test": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "localize": [
+                    "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+                    "__init__",
+                    "10"
+                ]
+            }
+        ]
+    }
+]

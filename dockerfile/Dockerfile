@@ -58,6 +58,10 @@ RUN git clone https://github.com/kupl/Pystaar.git
 # Set the working directory
 WORKDIR /Pystaar
 
+RUN chmod +x opensource_benchmark/setup_benchmark.sh
+RUN chmod +x opensource_benchmark/install_benchmark.sh
+RUN chmod +x opensource_benchmark/run_pystaar_benchmark.sh
+
 # Install the requirements
 RUN pip install -r requirements.txt
 RUN pip install --use-pep517 -e pyannotate

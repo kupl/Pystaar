@@ -1,0 +1,25 @@
+[
+    {
+        "idx": [
+            0,
+            1,
+            2
+        ],
+        "info": {
+            "funcname": "__init__",
+            "filename": "/home/neta/erc-group2-framework/example/crowdquake/gateway/stat/src/gateway/core/stat.py",
+            "classname": "Stat.__init__",
+            "line": 11
+        },
+        "args": {
+            "self": [
+                "example.crowdquake.gateway.stat.src.gateway.core.stat.Stat"
+            ],
+            "num_window_size": [
+                "List[int]",
+                "str",
+                "float"
+            ]
+        }
+    }
+]

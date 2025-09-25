@@ -1,0 +1,20 @@
+{
+    "raise": [
+        [],
+        []
+    ],
+    "constant": {
+        "str": [
+            "topic",
+            "localhost:9092",
+            "CR_KAFKA_BOOTSTRAP_SERVERS"
+        ],
+        "int": [
+            123
+        ],
+        "bytes": [
+            "value",
+            "key"
+        ]
+    }
+}
