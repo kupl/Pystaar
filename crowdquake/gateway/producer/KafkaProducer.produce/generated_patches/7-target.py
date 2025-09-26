@@ -1,2 +1,0 @@
-if not isinstance(self, example.crowdquake.gateway.producer.src.gateway.core.producer.KafkaProducer):
-    self._producer.produce(topic=topic, key=key, value=value, on_delivery=on_delivery)

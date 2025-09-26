@@ -67,7 +67,7 @@ def get_ranking_localize(neg_localize, pos_localize, type_difference) :
         sbfl_info = sbfl.fault_localization(dict_neg_localize, pos_localize, candidate_line)
         #pprint(sbfl_info)
         sbfl_info = append_type_difference_to_sbfl(sbfl_info, t)
-        
+
         if prev_equal is None and prev_diff is None :
             prev_equal = t['equal']
             prev_diff = t['diff_total']
@@ -84,4 +84,30 @@ def get_ranking_localize(neg_localize, pos_localize, type_difference) :
 
     ranking_localize.append(sbfl_dict)
 
-    return ranking_localize
+    new_localize = list()
+    for rank in ranking_localize :
+        new_rank = dict()
+        for key, value in rank.items() :
+            new_value = list()
+            new_function = None
+            tmp_value = list()
+            for v in value :
+                if new_function is None :
+                    new_function = v['info']['funcname']
+                    tmp_value.append(v)
+                elif new_function != v['info']['funcname'] :
+                    tmp_value = sorted(tmp_value, key=lambda item: (item['info']['name']), reverse=True)
+                    new_value.extend(tmp_value)
+
+                    tmp_value = list()
+                    new_function = v['info']['funcname']
+                    tmp_value.append(v)
+                else:
+                    tmp_value.append(v)
+
+            new_value.extend(sorted(tmp_value, key=lambda item: (item['info']['name']), reverse=True))
+            new_rank[key] = new_value
+        new_localize.append(new_rank)
+
+
+    return new_localize

@@ -1,1 +1,0 @@
-example.crowdquake.gateway.stat.src.gateway.core.stat.stat(self)

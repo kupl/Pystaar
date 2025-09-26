@@ -1,1 +1,0 @@
-isinstance(iteration, int) and iteration % self._sampling == 0

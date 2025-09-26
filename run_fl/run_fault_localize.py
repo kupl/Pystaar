@@ -1,113 +1,104 @@
-from .sbfl import Sbfl 
-def get_candidate_line(filename, funcname, line, neg_localize) :
-    candidate_line = []
+import argparse
+import os, sys
+from pathlib import Path
+import json
+import time
 
-    reverse_localize = list(reversed(neg_localize))
-    trace_line = 0
+sys.path.append(str(Path(__file__).parent.resolve()))
 
-    for text in reverse_localize :
-        split_text = text.split()
+from run_fl.type_difference import TypeDifference
+from run_fl.ranking_localization import get_ranking_localize
 
-        neg_filename = split_text[0]
-        neg_funcname = split_text[1]
-        neg_line = split_text[2]
+from const import (
+    FAULT_LOCALIZER_FOLDER,
+    FAULT_LOCALIZER_OUTPUT,
+    FAULT_LOCALIZER_DATA
+)
 
-        if trace_line > 0 :
-            if filename == neg_filename and \
-                funcname == neg_funcname and \
-                trace_line > int(neg_line) :
-                trace_line = int(neg_line)
-                candidate_line.append((neg_filename, neg_funcname, neg_line))
+from rich.table import Table
+from rich.live import Live
+from rich.console import Console
+from config import MY_PANEL
 
-        elif filename == neg_filename and \
-            funcname == neg_funcname and \
-            line == int(neg_line) :
-            trace_line = line
-            candidate_line.append((neg_filename, neg_funcname, neg_line))
+import logger
+logger = logger.set_logger(os.path.basename(__file__))
 
-    return candidate_line
+def run(config):
+    '''
+    This is the function which run fault localization.
+    '''
+    logger.info("Run Fault Localization...")
 
-def append_type_difference_to_sbfl(sbfl_info, type_difference_info) :
-    for key, localize_list in sbfl_info.items() :
-        new_localize_list = []
-        for localize in localize_list :
-            info_dict = dict()
-            info_dict['info'] = type_difference_info
-            info_dict['localize'] = localize
+    with open(config) as readfile :
+        pytest_option = json.load(readfile)
+    project_name = pytest_option['name']
 
-            new_localize_list.append(info_dict)
+    info_directory = config.parent / project_name
 
-        sbfl_info[key] = new_localize_list
+    with open(info_directory / "neg.json") as f :
+        neg_infos = json.load(f)
+    with open(info_directory / "pos.json") as f :
+        pos_info = json.load(f)
+    with open(info_directory / "neg_localize.json") as f :
+        neg_localize = json.load(f)
+    with open(info_directory / "pos_localize.json") as f :
+        pos_localize = json.load(f)
 
-    return sbfl_info
+    start_time = time.time()
+    type_diff = TypeDifference(neg_infos, pos_info)
+    type_diff_result = type_diff.scoring_by_function_line()
+    ranking_localize = get_ranking_localize(neg_localize, pos_localize, type_diff_result)
+    elapsed_time = time.time() - start_time
 
-def merge_localize(first, second) :
-    for key, value in second.items() :
-        if key in first :
-            first[key].extend(value)
-        else :
-            first[key] = value
+    logger.info("Run Fault Localization... Done! (Elapsed Time: {:.2f} sec)".format(elapsed_time))
 
-    return first
+    table = Table(show_header=True, header_style="bold magenta")
+    table.add_column("File", style="cyan")
+    table.add_column("Function", style="green")
+    table.add_column("Line", style="yellow")
+    table.add_column("Target Variable", style="red")
+    table.add_column("Rank by Function", style="blue")
+    table.add_column("SBFL Score", style="blue")
 
-def get_ranking_localize(neg_localize, pos_localize, type_difference) :
-    dict_neg_localize = dict()
-    for n in neg_localize :
-        dict_neg_localize[n] = dict_neg_localize.get(n, 0) + 1
+    # table_column_set = set()
+    fl_outputs = []
 
-    ranking_localize = list()
-    sbfl = Sbfl()
+    for i, rank_by_type in enumerate(ranking_localize) :
+        for score, localize_list in rank_by_type.items() :
+            for localize in localize_list :
+                (filename, funcname, localize_line) = localize['localize']
+                target_var = localize['info']['name']
 
-    prev_equal = None
-    prev_diff = None
+                # if localize['localize'] in table_column_set :
+                #     continue
+                # table_column_set.add(localize['localize'])
+                fl_output = {
+                    "filename": filename,
+                    "funcname": funcname,
+                    "localize_line": localize_line,
+                    "target_var": target_var,
+                    "rank_by_function": i+1,
+                    "score": round(score, 3)
+                }
 
-    sbfl_dict = dict()
-    for t in type_difference :
-        candidate_line = get_candidate_line(t['filename'], t['funcname'], t['line'], neg_localize)
-        sbfl_info = sbfl.fault_localization(dict_neg_localize, pos_localize, candidate_line)
-        #pprint(sbfl_info)
-        sbfl_info = append_type_difference_to_sbfl(sbfl_info, t)
+                fl_outputs.append(fl_output)
 
-        if prev_equal is None and prev_diff is None :
-            prev_equal = t['equal']
-            prev_diff = t['diff_total']
-            sbfl_dict = sbfl_info
-            
-        elif prev_equal == t['equal'] and prev_diff == t['diff_total'] :
-            merge_localize(sbfl_dict, sbfl_info)
-        
-        else :
-            prev_equal = t['equal']
-            prev_diff = t['diff_total']
-            ranking_localize.append(sbfl_dict)
-            sbfl_dict = sbfl_info
+                table.add_row(filename, funcname, localize_line, target_var, str(i+1), str(round(score, 3)))
 
-    ranking_localize.append(sbfl_dict)
+    # sort fl_outputs
+    fl_outputs.sort(key=lambda x: (x['rank_by_function'], -x['score']), reverse=False)
 
-    new_localize = list()
-    for rank in ranking_localize :
-        new_rank = dict()
-        for key, value in rank.items() :
-            new_value = list()
-            new_function = None
-            tmp_value = list()
-            for v in value :
-                if new_function is None :
-                    new_function = v['info']['funcname']
-                    tmp_value.append(v)
-                elif new_function != v['info']['funcname'] :
-                    tmp_value = sorted(tmp_value, key=lambda item: (item['info']['name']), reverse=True)
-                    new_value.extend(tmp_value)
+    console = Console()
+    console.print(table)
+    
+    # path where you will save the output of fault localizer
+    if not os.path.isdir(info_directory / FAULT_LOCALIZER_FOLDER):
+        os.mkdir(info_directory / FAULT_LOCALIZER_FOLDER)
 
-                    tmp_value = list()
-                    new_function = v['info']['funcname']
-                    tmp_value.append(v)
-                else:
-                    tmp_value.append(v)
+    with open(info_directory / FAULT_LOCALIZER_OUTPUT, 'w') as f:
+        json.dump(ranking_localize, f, indent=4)
 
-            new_value.extend(sorted(tmp_value, key=lambda item: (item['info']['name']), reverse=True))
-            new_rank[key] = new_value
-        new_localize.append(new_rank)
+    with open(info_directory / FAULT_LOCALIZER_DATA, 'w') as f:
+        json.dump(fl_outputs, f, indent=4)
 
-
-    return new_localize
+    # raise Exception("Not Implemented")

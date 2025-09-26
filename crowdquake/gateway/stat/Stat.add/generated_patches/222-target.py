@@ -1,1 +1,0 @@
-int(self._window_bytes)
