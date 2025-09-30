@@ -150,7 +150,9 @@ python patch_run.py -s project/source -p project -c test/config.json
 This command can be used when tests are already generated and the user wants to customize the `config.json` file.
 
 #### Configuration File
-The configuration file is a JSON file that contains the information about the test execution process, needed for further patch generation. The file should contain the following fields:
+The configuration file is a JSON file that contains the information about the test execution process, needed for further patch generation. 
+You can find example configuration files in the `test_info` directory.
+The file should contain the following fields:
 
 ```json
 {
