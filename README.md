@@ -2,13 +2,66 @@
 
 PySTAAR is an end-to-end, extensible tool for automated Python type error repair. 
 
-# Web Interface
+## Web Interface
 
 PySTAAR provides a web interface for users to interact with the framework.
 You can access the web interface at [PySTAAR Web Interface](https://pystaar.org).
 
-# Installation  
-We recommend using a PySTAAR in a local environment. First, clone the repository:
+## Running via Docker (Recommended)
+It is highly recommended to run PySTAAR via the Docker image.
+
+### Build the Docker image
+You can build the Docker image using the provided `Dockerfile`. Run the following command in the terminal:
+```bash
+docker build -t pystaar dockerfile/.
+```
+
+### Run the Docker container
+After building the Docker image, you can run the Docker container using the following command:\
+```bash
+docker run -it pystaar
+```
+This command will start the Docker container and open an interactive terminal session.
+
+### Reproduce Results on open-source projects
+We have included three open-source projects for you to test PySTAAR. 
+Each is pre-configured with a single type error that PySTAAR will automatically fix.
+
+#### Setup Projects
+To set up the projects, run the following command in the Docker container:
+```bash
+bash opensource_benchmark/setup_benchmark.sh
+bash opensource_benchmark/install_benchmark.sh
+```
+These commands will download and install the necessary dependencies for the projects.
+
+#### Execute PySTAAR on Projects
+You can run PySTAAR on three open-source projects using the following commands:
+```
+bash opensource_benchmark/run_pystaar_benchmark.sh
+```
+This command will execute PySTAAR on all three projects sequentially.
+
+Alternatively, you can run PySTAAR on each project individually using the following commands (for `requests` project as an example):
+```bash
+python opensource_benchmark/run_benchmark_test.py -s /Pystaar/benchmark/requests/requests -p /Pystaar/benchmark/requests -c /Pystaar/test_info/requests_info.json
+python run_fault_localize.py -c /Pystaar/test_info/requests_info.json
+python run_patch_generate.py -s /Pystaar/benchmark/requests/requests -c /Pystaar/test_info/requests_info.json
+python run_validate.py -s /Pystaar/benchmark/requests/requests -c /Pystaar/test_info/requests_info.json
+```
+The detailed information about the commands can be found [Below Section](#running-the-framework-on-a-specific-module).
+
+
+### Reproduce Results on industrial application
+You can also run PySTAAR on an industrial application (CrowdQuake) using the following command:
+```bash
+pip install -r requirements-crowdquake.txt
+bash run_pystaar_crowdquake.sh
+```
+This command will execute PySTAAR on 7 samples from the CrowdQuake project.
+
+## Running via Local Environment
+We also provided PySTAAR in a local environment. First, clone the repository:
 
 ```bash
 git clone https://github.com/kupl/Pystaar.git
@@ -22,14 +75,14 @@ Next, install the modified version of [pyannotate](https://github.com/dropbox/py
 pip install --use-pep517 -e pyannotate
 ```
 
-# Execution  
+### Setup OpenAI API Key for LLM-based Test Generation  
 
-To execute the PySTAAR with existing components, you shold set up OpenAI API key in the environment variable
+To execute the PySTAAR with existing components, you should set up OpenAI API key in the environment variable
 ```bash
 export OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
 ```
 
-## Running the whole framework
+### Running the whole framework
 To run the PySTAAR framework, we provide a sample script that demonstrates how to use the framework:
 
 ```bash
@@ -48,10 +101,10 @@ python pystaar.py -h
 ```
 
 
-## Running the framework on a specific module
+### Running the framework on a specific module
 Each module in the framework can be run independently. 
 
-### Test Generation 
+#### Test Generation 
 To generate tests for a specific source file, use the following command:
 
 ```bash
@@ -60,32 +113,32 @@ python run_test_generation.py -sf project/source/add.py -p project
 
 As a result of this command, the framework will generate tests for the functions in the specified source file. The generated tests will be saved in the `test` directory. Moreover, the framework will also generate a configuration file in the `test` directory, with name `config.json`, which contains the information about the test execution process, needed for further patch generation. Additional arguments can be found in the `run_test_generation.py` file. Further explanation of the `config.json` file can be found in [Configuation File](#configuration-file).
 
-### Execution of Tests
+#### Execution of Tests
 To run the fault localization module, use the following command:
 ```bash
-python run_test.py --config test/config.json
+python run_test.py -s project/source -p project -c test/config.json
 ```
 
 This command will execute the tests generated in the previous step and will save the results in the `test` directory. Additionally, passing `-n` or `--only-neg` will only run the negative tests.
 
-### Fault Localization
+#### Fault Localization
 To run the fault localization module, use the following command:
 ```bash
-python run_fault_localize.py --config test/config.json
+python run_fault_localize.py -c test/config.json
 ```
 This command will run the fault localization module and will save the results in the `fl_output` directory in `test` directory. 
 
-### Patch Generation
+#### Patch Generation
 To generate patches for the identified type errors, use the following command:
 ```bash
-python run_patch_generate --config test/config.json
+python run_patch_generate -s project/source -c test/config.json
 ```
 This command will generate patches for the identified type errors and will save the results in the `generated_patches` directory in `test` directory.
 
-### Patch Validation
+#### Patch Validation
 To validate the generated patches, use the following command:
 ```bash
-python run_validate.py --config test/config.json
+python run_validate.py -s project/source -c test/config.json
 ```
 This command will validate the generated patches and will save the results in the `validated_patches` directory in `test` directory. 
 
@@ -96,7 +149,7 @@ python patch_run.py -s project/source -p project -c test/config.json
 ```
 This command can be used when tests are already generated and the user wants to customize the `config.json` file.
 
-### Configuration File
+#### Configuration File
 The configuration file is a JSON file that contains the information about the test execution process, needed for further patch generation. The file should contain the following fields:
 
 ```json
