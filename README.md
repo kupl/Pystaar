@@ -7,6 +7,8 @@ PySTAAR is an end-to-end, extensible tool for automated Python type error repair
 PySTAAR provides a web interface for users to interact with the framework.
 You can access the web interface at [PySTAAR Web Interface](https://pystaar.org).
 
+**Warning**: Due to security issues, file upload is currently disabled. We will address this soon.
+
 ## Running via Docker (Recommended)
 It is highly recommended to run PySTAAR via the Docker image.
 
@@ -55,6 +57,7 @@ The detailed information about the commands can be found [Below Section](#runnin
 ### Reproduce Results on industrial application
 You can also run PySTAAR on an industrial application (CrowdQuake) using the following command:
 ```bash
+apt-get install librdkafka-dev -y
 pip install -r requirements-crowdquake.txt
 bash run_pystaar_crowdquake.sh
 ```
